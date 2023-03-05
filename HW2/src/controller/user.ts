@@ -1,6 +1,6 @@
 import  { Request, Response } from "express";
 import {prisma} from "../config/db";
-
+import { Role } from "@prisma/client";
 
 export const Register = async (req: Request, res: Response) => {
   try {
@@ -38,7 +38,7 @@ export const getAlluser = async (req: Request, res: Response) => {
 
 export const getOneUserByID = async (req: Request, res: Response) => {
   try {
-    let id = req.params;
+    let id = req.params.id;
     let user = await prisma.user.findFirst({
       where: {
         id: id,
@@ -60,7 +60,7 @@ export const getOneUserByID = async (req: Request, res: Response) => {
 
 export const getOneUserByEmail = async (req: Request, res: Response) => {
   try {
-    let email = req.params;
+    let email = req.params.email;
     let user = await prisma.user.findFirst({
       where: {
         email: email,
@@ -117,16 +117,20 @@ try {
 export const getrole = async (req: Request, res: Response) => {
 
   try {
-    let { role } = req.body
-    let user_one = await prisma.user.aggregate({
+    let role  = req.params.role
+    let user = await prisma.user.findMany({
         where: {
-            role
+            role:role as Role
         },
-        _count: {
-            role: true,    
-        },
+        select: {
+          email: true,
+          username: true,
+          role: true,
+          age:true,
+          joiningYear: true,
+      },
     })
-    res.json(user_one);
+    res.json(user);
 
   } catch (error) {
     console.log(error);

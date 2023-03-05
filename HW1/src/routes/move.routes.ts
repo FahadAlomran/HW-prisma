@@ -8,11 +8,11 @@ let router =  express.Router();
 
 router.get("/", getAllMovie )
 
-router.get("/:genre", getAllMovieByGenre )
+router.get("/genre/:genre", getAllMovieByGenre )
 
-router.get("/name", getMovie )
+router.get("/name/:name", getMovie )
 
-router.get("/:rating", getMovieByRating )
+router.get("/rating/:rating", getMovieByRating )
 
 router.post("/", addNewMovie)
 

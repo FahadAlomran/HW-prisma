@@ -14,13 +14,13 @@ router.post('/',Register)
 router.get('/:id',getOneUserByID)
 
 //get user by email
-router.get('/:email',getOneUserByEmail)
+router.get('/email/:email',getOneUserByEmail)
 
 //get user by age
-router.get('/:age',getolderUser)
+router.get('/age/:age',getolderUser)
 
 // get user by role
-router.get('/role',getrole)
+router.get('/role/:role',getrole)
 
 router.get('/login',Login)
 

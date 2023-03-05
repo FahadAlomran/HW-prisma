@@ -7,9 +7,11 @@ export const getAllMovie = async (req: Request, res: Response) => {
     let allMovie= await prisma.movie.findMany(
       {
         select:{
+          id:true,
           movieTitle:true,
           rating:true,
-          genre:true
+          genre:true,
+          
         }
       }
     )
@@ -31,6 +33,7 @@ export const getAllMovie = async (req: Request, res: Response) => {
          genre :Genre as genre 
         },
         select:{
+          id:true,
           movieTitle:true,
           rating:true,
           genre:true
@@ -51,7 +54,7 @@ export const getAllMovie = async (req: Request, res: Response) => {
     let nameMovie= await prisma.movie.findFirst(
       {
         where:{
-          movieTitle:req.body
+          movieTitle:req.params.name
         },
         select:{
           movieTitle:true,
