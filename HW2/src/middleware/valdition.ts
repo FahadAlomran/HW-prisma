@@ -12,7 +12,7 @@ const validate = (schema:AnyZodObject)=> (req:Request, res:Response, next:NextFu
             query:req.query,
             headers:req.headers
         })
-
+        next()
     }catch(err){
         const zodError = err as ZodError;
         return res.status(400).json( {

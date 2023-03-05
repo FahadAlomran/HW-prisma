@@ -14,9 +14,9 @@ router.get("/name/:name", getMovie )
 
 router.get("/rating/:rating", getMovieByRating )
 
-router.post("/", addNewMovie)
+router.post("/", validate(addMovie),addNewMovie)
 
-router.put("/:id",updateMovie )
+router.put("/:id", validate(addMovie),updateMovie )
 
 router.delete("/:id", deleteMovie )
 

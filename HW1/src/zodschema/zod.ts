@@ -19,8 +19,8 @@ export const addMovie = z.object({
             required_error:"genre is required",
             invalid_type_error:"genre is invalid",
         })
-    })
-})
+    }),
+});
 
 export const UMovie = z.object({
     body:z.object({
@@ -45,7 +45,7 @@ export const UMovie = z.object({
             required_error:"genre is required",
             invalid_type_error:"genre is invalid",
         })
-    })
-})
+    }),
+});
 export type addNewMovietypeschema = TypeOf<typeof addMovie>["body"];
 export type UMovietypeschema = TypeOf<typeof UMovie>["body"];
